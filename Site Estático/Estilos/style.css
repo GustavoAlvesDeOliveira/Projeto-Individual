@@ -57,6 +57,25 @@ header{
     align-items: center;
 }
 
+.Elementosheader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DivLogin {
+    display: flex;
+    margin-left: 100px;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    margin-left: 400px;
+    margin-right: -500px;
+}
+.navheader{
+    
+}
 .navheader a{
         margin: 50px;
     }
+
+
