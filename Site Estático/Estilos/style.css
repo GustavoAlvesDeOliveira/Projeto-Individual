@@ -10,6 +10,8 @@ body{
     background-color: #f2f2f2;
     margin: 0;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: "Italiana", sans-serif;
 }
 
@@ -77,7 +79,7 @@ header{
 .navheader{
     
 }
-.navheader a{
+.navheader h3{
         margin: 50px;
     }
 
