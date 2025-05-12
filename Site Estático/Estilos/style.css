@@ -1,7 +1,6 @@
 /* Importando as fontes*/
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Italiana&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
 /*Foodys - Food Display Font*/
 
@@ -10,14 +9,12 @@ body{
     background-color: #f2f2f2;
     margin: 0;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-family: "Italiana", sans-serif;
 }
 
 .FaixaTopo{
     display: flex;
-    background-color: #F9CEA1;
+    background-image: url(../Images/fundobege.png);
     width: 100%;
     height: 10px;
     border-bottom: solid #dfad81 5px;
@@ -30,31 +27,30 @@ body{
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: 1.2rem;
-    background-image: url(../Images/floral2.jpg);
+    background-color: #63D4DF;
     }
+
+.imgtitulo img{
+    width: 50px;
+}
 
 .titulo{
     display: flex;
-    /*font-family: "Fredericka the Great", serif;*/
-    color: #54B5BF;
     font-family: "Bonheur Royale", cursive;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 1.2rem;
     margin: 10px;
 }
-.titulo img{
-    width: 250px;
-}
+
 .titulo h1{
     margin: 0;
 }
 
 header{
     display: flex;
-    background-color: #F9CEA1;
-    margin-top: 10px;
+    background-image: url(../Images/fundobege.png);
     width: 100%;
     height: 70px;
     box-shadow: 0px 0px 10px 5px #D98F4E;
@@ -65,23 +61,25 @@ header{
 
 .Elementosheader{
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.DivLogin {
-    display: flex;
-    margin-left: 100px;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-evenly;
     align-items: center;
-    margin-left: 400px;
+    width: 70%;
 }
-.navheader{
-    
+
+.Elementosheader a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
 }
-.navheader h3{
-        margin: 50px;
-    }
 
 
-
+.Elementosheader hr {
+    flex: 1;
+    height: 1px;
+    border: none;
+    background-color: black;
+    margin: 0px 15px;
+}
