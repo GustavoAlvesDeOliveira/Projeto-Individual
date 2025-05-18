@@ -1,7 +1,7 @@
 
 
 body{
-    background-image: url(../Images/fundodeglaceons.png);
+    background-image: url(../assets/fundodeglaceons.png);
 }
 
 .cadastrologin{
@@ -10,7 +10,7 @@ body{
     align-items: center;
     justify-content: center;
     margin-top: 5%;
-    background-image: url(../Images/fundobege.png);
+    background-image: url(../assets/fundobege.png);
     width: 45%;
     height: auto;
     border-radius: 20px;

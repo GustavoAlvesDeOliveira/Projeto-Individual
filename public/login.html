@@ -1,89 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Login</title>
+    <title>Culinária glacial</title>
 
     <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="Images/logomenor.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-
-    <!--Header-->
-
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">AquaTech</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
-            </ul>
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
         </div>
     </div>
-
-
-    <div class="login">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+    <div class="cadastrologin">
+        <div class="vantagens">
+            <h3>Vantagens de ter login<br>Culinária Glacial:</h3>
+            <div class="Descricaovantagens">
+                <i class='bx bx-bookmark-heart'></i>
+                <h4>Aba de Favoritos</h4>
             </div>
-        </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
+            <div class="Descricaovantagens">
+                <i class='bx bxs-comment-detail'></i>
+                <h4>Interação com os posts</h4>
+            </div>
+            <div class="Descricaovantagens">
+                <i class='bx bx-file-find'></i>
+                <h4>Quiz disponível</h4>
+            </div>
+            <div class="Descricaovantagens">
+                <i class='bx bx-bar-chart-alt'></i>
+                <h4>Painel Expecífico</h4>
+            </div>
 
+        </div>
+        <div class="voltar">
+            <a href="index.html">
+                < Voltar </a>
+        </div>
+        <div class="Hcadastro">
+            <h3>Bem-vindo de volta!</h3>
+        </div>
+        <div class="pulalinha">
+            <hr>
+            <h3>LOGIN</h3>
+            <hr>
+        </div>
+        <div class="Inputs">
+            <div class="Duasinputs">
+                <div class="campos">
+                    <p>E-mail:</p>
+                    <input type="text" placeholder="E-mail" id="email_input">
+                </div>
+            </div>
+            <div class="Duasinputs">
+                <div class="campos">
+                    <p>Senha:</p>
+                    <input type="password" placeholder="*****" id="senha_input">
+                </div>
+            </div>
+            <div class="final">
+                <button onclick="entrar()">Entrar</button>
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
                 </div>
-
                 <div id="div_erros_login"></div>
+                <h4>Não possue conta? Faça o <a href="cadastro.html">cadastro</a></h4>
+                <hr>
             </div>
         </div>
     </div>
-
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-            <span class="version">v1.0.0</span>
-        </div>
-    </div>
-    <!--footer fim-->
-
 </body>
 
 </html>
-
 <script>
 
 
