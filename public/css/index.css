@@ -1,0 +1,39 @@
+
+.imgreceitas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ 
+}
+
+.Duasreceitas{
+    display: flex;
+    flex-direction: column;
+}
+
+ #mousse{
+    display: flex;
+    margin-right: 10px;
+ }
+
+ #salmao{
+    display: flex;
+    margin-bottom: 10px;
+ }
+
+ #frangokfc{
+    display: flex;
+ }
+
+ #mousse img{
+    width: 500px ;
+    
+ }
+
+ #salmao img{
+    width: 250px;
+ }
+
+ #frangokfc img{
+    width: 250px;
+ }
