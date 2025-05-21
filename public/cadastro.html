@@ -121,6 +121,9 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = ipt_nome.value;
+    var sobrenomeVar = ipt_sobrenome.value;
+    var dtnascVar = ipt_dtnasc.value;
+    var generoVar = select_genero.value;
     var emailVar = ipt_email.value;
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_confsenha.value;
@@ -131,7 +134,10 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
+      confirmacaoSenhaVar == "" ||
+      sobrenomeVar == "" ||
+      dtnascVar == "" ||
+      generoVar == "" 
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -153,6 +159,9 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
+        sobrenomeServer: sobrenomeVar,
+        dtnascServer: dtnascVar,
+        generoServer: generoVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
       }),
