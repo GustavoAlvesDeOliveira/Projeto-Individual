@@ -1,30 +1,105 @@
 
+
 .imgreceitas{
     display: flex;
     flex-direction: row;
     justify-content: center;
  
 }
-
+.imgreceitas a{
+   text-decoration: none;
+}
 .Duasreceitas{
     display: flex;
     flex-direction: column;
+    
 }
 
- #mousse{
+.Duasreceitas a{
+   text-decoration: none;
+}
+
+#mousse { 
     display: flex;
+    width: 500px;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    justify-content: end;
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-size: cover;
+    background-image: url(../assets/receitas/mousse.png);
     margin-right: 10px;
  }
 
- #salmao{
+#mousse:hover{
+   transform: scale(1.06);
+ }
+
+#mousse h3{
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+   align-items: center;
+   color: white;
+}
+
+#salmao { 
     display: flex;
+    width: 250px;
+    height: 250px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    justify-content: end;
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-size: cover;
+    background-image: url(../assets/receitas/salmao.jpg);
     margin-bottom: 10px;
  }
 
- #frangokfc{
-    display: flex;
+#salmao:hover{
+   transform: scale(1.06);
  }
 
+#salmao h3{
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+   align-items: center;
+   color: white;
+}
+
+ #frangokfc{
+    display: flex;
+    width: 250px;
+    height: 250px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    justify-content: end;
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-size: cover;
+    background-image: url(../assets/receitas/frangokfc.jpg);
+ }
+
+#frangokfc:hover{
+   transform: scale(1.06);
+ }
+
+#frangokfc h3{
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+   align-items: center;
+   color: white;
+}
+
+ 
  #mousse img{
     width: 500px ;
     
