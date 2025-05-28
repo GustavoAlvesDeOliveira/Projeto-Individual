@@ -142,14 +142,38 @@ input:focus {
     outline: 10px;
 }
 
+.inputsimples{
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
+    width: 95%;
+    font-size: 16px;
+}
+
+.inputsimples:focus{
+    border-color:  #63D4DF;
+    box-shadow: 0 0 0 5px #63D4DF(91, 157, 255, 0.3);
+    outline: 10px;
+}
+
+
 select {
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    width: 100%;
+    background-color: white;
+    width: 97%;
     font-size: 16px;
+}
+
+select:focus{
+    border-color:  #63D4DF;
+    box-shadow: 0 0 0 5px #63D4DF(91, 157, 255, 0.3);
+    outline: 10px;
 }
 
 button {
