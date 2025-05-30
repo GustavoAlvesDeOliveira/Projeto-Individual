@@ -82,13 +82,48 @@
     </div>
 
     </div>
+    <div id="teste"></div>
 </body>
 
 </html>
 <script>
     if (sessionStorage.ID_USUARIO) {
     var nome = sessionStorage.NOME_USUARIO;
-    logado.innerHTML = `${nome.toUpperCase()}`
+    var Lsobrenome = sessionStorage.SOBRENOME;
+
+    const nomesobrenome = [];
+    
+    var sobrenomeseparado = Lsobrenome.replaceAll(" ",",");
+    let sobrenomeseparadonovetor = sobrenomeseparado.split(",");
+
+    const json = {
+        "Nome": nome[0].toUpperCase() + nome.substring(1, nome.length).toLowerCase(),
+        "Sobrenome": [sobrenomeseparado]
+    }
+    
+    nomesobrenome.push(json);
+
+    for( let i = 0 ; i < nomesobrenome.length ; i++){
+        teste.innerHTML = `${nomesobrenome[i]}`
+        for(let j = 0; j < nomesobrenome[i].Sobrenome.length; j++){
+            teste.innerHTML += `Ue ${nomesobrenome[i].Sobrenome[j][0].toUpperCase()}`
+            // nomesobrenome[i].Sobrenome[j][0].substring(1, nomesobrenome[j].length).toLowerCase()}`
+        }
+    }
+
+//    var nomecomsobrenome = nome + ' ' + sobrenomeseparado;
+
+//     nomesobrenome.push(nomecomsobrenome);
+
+     console.log(nomesobrenome);
+
+    
+
+    var nome = sessionStorage.NOME_USUARIO;
+    var Lsobrenome = sessionStorage.SOBRENOME;
+
+    logado.innerHTML = `${nome} ${Lsobrenome}`
+
 }
     
 </script>

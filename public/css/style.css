@@ -120,22 +120,25 @@ header{
 
 .alerta_erro{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  
 }
 
 .card_erro {
   display: none;
   background-color: #fff;
   color: black;
-  width: 230px;
+  width: 350px;
+  height: 75px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #63D4DF 3px solid;
   padding: 10px;
-  margin-right: 10%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .card_erro #mensagem_erro{
-  font-weight: 500;
   font-size: 20px;
 }
