@@ -51,7 +51,14 @@
 
 
     <div class="container">
+
+        <div class="Bemvindo">
+            <div class="Userlogado">
+            <h2>Seja bem-Vindo!</h2> <h2 id="logado"></h2>
+            </div>
+        </div>
         <div class="recentes">
+            <hr>
             <h2> Receitas em destaque:</h2>
             <a href="login.html">
                 <div class="imgreceitas">
@@ -78,3 +85,10 @@
 </body>
 
 </html>
+<script>
+    if (sessionStorage.ID_USUARIO) {
+    var nome = sessionStorage.NOME_USUARIO;
+    logado.innerHTML = `${nome.toUpperCase()}`
+}
+    
+</script>
