@@ -48,6 +48,7 @@
     background-size: cover;
     background-image: url(../assets/receitas/mousse.png);
     margin-right: 10px;
+    transition: 0.3s;
  }
 
 #mousse:hover{
@@ -75,6 +76,7 @@
     background-size: cover;
     background-image: url(../assets/receitas/salmao.jpg);
     margin-bottom: 10px;
+    transition: 0.3s;
  }
 
 #salmao:hover{
@@ -101,6 +103,8 @@
     background-position: cover;
     background-size: cover;
     background-image: url(../assets/receitas/frangokfc.jpg);
+    transition: 0.3s;
+
  }
 
 #frangokfc:hover{

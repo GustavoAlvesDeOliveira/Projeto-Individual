@@ -18,9 +18,9 @@
     <div class="FaixaTopo"></div>
     <div class="DivTitulo">
         <a href="index.html">
-        <div class="imgtitulo">
-            <img src="assets/Logo.png">
-        </div>
+            <div class="imgtitulo">
+                <img src="assets/Logo.png">
+            </div>
         </a>
         <div class="titulo">
             <h1>Culinária Glacial</h1>
@@ -54,7 +54,7 @@
 
         <div class="Bemvindo">
             <div class="Userlogado">
-            <h2>Seja bem-Vindo!</h2> <h2 id="logado"></h2>
+                <h2 id="h2bemvindo"></h2>
             </div>
         </div>
         <div class="recentes">
@@ -87,43 +87,26 @@
 
 </html>
 <script>
+
     if (sessionStorage.ID_USUARIO) {
-    var nome = sessionStorage.NOME_USUARIO;
-    var Lsobrenome = sessionStorage.SOBRENOME;
+        var nome = sessionStorage.NOME_USUARIO;
+        var Lsobrenome = sessionStorage.SOBRENOME;
+        var genero = sessionStorage.GENERO;
 
-    const nomesobrenome = [];
-    
-    var sobrenomeseparado = Lsobrenome.replaceAll(" ",",");
-    let sobrenomeseparadonovetor = sobrenomeseparado.split(",");
+        console.log(genero)
 
-    const json = {
-        "Nome": nome[0].toUpperCase() + nome.substring(1, nome.length).toLowerCase(),
-        "Sobrenome": [sobrenomeseparado]
-    }
-    
-    nomesobrenome.push(json);
-
-    for( let i = 0 ; i < nomesobrenome.length ; i++){
-        teste.innerHTML = `${nomesobrenome[i]}`
-        for(let j = 0; j < nomesobrenome[i].Sobrenome.length; j++){
-            teste.innerHTML += `Ue ${nomesobrenome[i].Sobrenome[j][0].toUpperCase()}`
-            // nomesobrenome[i].Sobrenome[j][0].substring(1, nomesobrenome[j].length).toLowerCase()}`
+        if (genero == 'Masculino') {
+            h2bemvindo.innerHTML = `Seja Bem-Vindo! ${nome} ${Lsobrenome}`
+        }
+        else if (genero == 'Feminino') {
+            h2bemvindo.innerHTML = `Seja Bem-Vinda! ${nome} ${Lsobrenome}`
+        }
+        else {
+            h2bemvindo.innerHTML = `Seja Bem-Vinde! ${nome} ${Lsobrenome}`
         }
     }
+    else {
+        h2bemvindo.innerHTML = `Seja Bem-Vindo(a)! Faça login para melhor experiência`
+    }
 
-//    var nomecomsobrenome = nome + ' ' + sobrenomeseparado;
-
-//     nomesobrenome.push(nomecomsobrenome);
-
-     console.log(nomesobrenome);
-
-    
-
-    var nome = sessionStorage.NOME_USUARIO;
-    var Lsobrenome = sessionStorage.SOBRENOME;
-
-    logado.innerHTML = `${nome} ${Lsobrenome}`
-
-}
-    
 </script>
