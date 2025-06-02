@@ -68,7 +68,7 @@
         <div class="campos">
           <p>Seu gênero:</p>
           <select id="select_genero">
-            <option value="#">Selecione seu gênero</option>
+            <option value="nulo">Selecione seu gênero</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
             <option value="Outros">Outros</option>
@@ -137,7 +137,7 @@
       confirmacaoSenhaVar == "" ||
       sobrenomeVar == "" ||
       dtnascVar == "" ||
-      generoVar == ""
+      generoVar == 'nulo'
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =

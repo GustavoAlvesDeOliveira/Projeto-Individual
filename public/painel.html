@@ -12,10 +12,71 @@
 </head>
 
 <body>
+
+    <div class="FaixaTopo"></div>
+    <div class="DivTitulo">
+        <a href="index.html">
+            <div class="imgtitulo">
+                <img src="assets/Logo.png">
+            </div>
+        </a>
+        <div class="titulo">
+            <h1>Culinária Glacial</h1>
+        </div>
+        <div class="DivLogin">
+            <a href="login.html">Login</a>
+            <p id="Sair"></p>
+        </div>
+    </div>
+
+    <!--Header e seus elementos-->
+
+    <header>
+        <div class="Elementosheader" id="BLUR1">
+            <hr>
+            <a href="index.html"> <i class='bx bx-home'></i> Home </a>
+            <hr>
+            <a href="receitas.html"><i class='bx bx-fork'></i>Receitas</a>
+            <hr>
+            <a href="sobremim.html"><i class='bx bxs-user'></i>Sobre Mim</a>
+            <hr>
+            <a href="quiz.html"><i class='bx bx-file-find'></i>Quiz</a>
+            <hr>
+            <a href="painel.html"><i class='bx bx-bar-chart-alt'></i>Painel</a>
+            <hr>
+        </div>
+    </header>
+
+    <div id="blure" class="blure">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+                <div class="divbuttonerro">
+                    <button class="buttonerro" onclick="opcao('home')">
+                        < Home</button> <button class="buttonerro" onclick="opcao('login')"> Login > </button>
+                </div>
+            </div>
+        </div>
+
 </body>
+
 </html>
 <script>
     if (!sessionStorage.ID_USUARIO) {
-    window.location.href = "login.html"; // ajuste o nome da sua página de login se necessário
-}
+        if (!sessionStorage.ID_USUARIO) {
+            blure.style.display = "flex"
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = `Faça login para acessar esta página`
+
+            function opcao(parametro) {
+
+                if (parametro == 'home') {
+                    window.location.href = "index.html";
+                }
+                if (parametro == 'login') {
+                    window.location.href = "login.html";
+                }
+            }
+        }
+    }
 </script>

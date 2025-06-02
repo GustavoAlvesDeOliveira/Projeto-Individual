@@ -14,6 +14,20 @@ body{
     font-family: "Italiana", sans-serif;
 }
 
+.blure{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 123, 255, 0.3);
+}
+
 .FaixaTopo{
     display: flex;
     background-image: url(../assets/fundobege.png);
@@ -126,19 +140,52 @@ header{
 
 .card_erro {
     display: none;
+    flex-direction: column;
     position: fixed;
     max-width: 400px;
     text-align: center;
     font-size: 1rem;
     background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
     border-left: 6px solid #63D4DF;
-    color: #01579b;
+    color: black;
+    font-weight: bold;
     padding: 16px 20px;
     margin: 20px auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px #01579b;
+
 }
 
 .card_erro #mensagem_erro{
   font-size: 20px;
+}
+
+.divbuttonerro{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+.buttonerro{
+
+    background-color: #63D4DF;
+    font-family: "Italiana", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonerro:hover {
+    background-color: #63D4DF; 
+    transform: translateY(-1px);
 }
