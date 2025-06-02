@@ -37,6 +37,12 @@
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
+      <div class="alerta_erro">
+        <div class="card_acerto" id="cardAcerto">
+          <span id="mensagem_acerto"></span>
+        </div>
+      </div>
+
     </div>
     <div class="Hcadastro">
       <h3>Se junte a família! Libere as vantagens a cima e muito mais! </h3>
@@ -140,14 +146,11 @@
       generoVar == 'nulo'
     ) {
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-      finalizarAguardar();
+      setInterval(sumirMensagem, 3000);
       return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    } 
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -170,9 +173,9 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          cardAcerto.style.display = "block";
 
-          mensagem_erro.innerHTML =
+          mensagem_acerto.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {

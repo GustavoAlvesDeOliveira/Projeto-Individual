@@ -48,10 +48,10 @@
 
     <div id="blure" class="blure">
         <div class="alerta_erro">
-            <div class="card_erro">
+            <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
                 <div class="divbuttonerro">
-                <button class="buttonerro" onclick="opcao('home')"> < Home</button> <button class="buttonerro" onclick="opcao('login')"> Login > </button>
+                <button class="buttonerro" onclick="opcao('home')">< Home</button><button class="buttonerro" style="background-color: #63D4DF;" onclick="opcao('login')"> Login > </button>
                 </div>
             </div>
         </div>
@@ -61,19 +61,19 @@
 </body>
 </html>
 <script>
-    // if (!sessionStorage.ID_USUARIO) {
-    //     blure.style.display = "flex"
-    //     cardErro.style.display = "block"
-    //     mensagem_erro.innerHTML = `Faça login para acessar esta página`
+    if (!sessionStorage.ID_USUARIO) {
+        blure.style.display = "flex"
+        cardErro.style.display = "block"
+        mensagem_erro.innerHTML = `Faça login para acessar esta página`
 
-    //     function opcao(parametro){
+        function opcao(parametro){
 
-    //         if(parametro == 'home'){
-    //             window.location.href = "index.html";
-    //         }
-    //         if(parametro == 'login'){
-    //             window.location.href = "login.html";
-    //         }
-    //     }
-    // }
+            if(parametro == 'home'){
+                window.location.href = "index.html";
+            }
+            if(parametro == 'login'){
+                window.location.href = "login.html";
+            }
+        }
+    }
 </script>

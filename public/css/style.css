@@ -118,6 +118,20 @@ header{
   display: none
 }
 
+.blure{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 123, 255, 0.3);
+}
+
 .alerta_erro{
   display: flex;
   justify-content: center;
@@ -131,6 +145,23 @@ header{
     max-width: 400px;
     text-align: center;
     font-size: 1rem;
+    background: linear-gradient(135deg, #fae0e0, #d89c9c);
+    border-left: 6px solid red;
+    color: black;
+    font-weight: bold;
+    padding: 16px 20px;
+    margin: 20px auto;
+    border-radius: 12px;
+
+}
+
+.card_acerto {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    max-width: 400px;
+    text-align: center;
+    font-size: 1rem;
     background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
     border-left: 6px solid #63D4DF;
     color: black;
@@ -138,8 +169,11 @@ header{
     padding: 16px 20px;
     margin: 20px auto;
     border-radius: 12px;
-    box-shadow: 0 4px 12px #01579b;
 
+}
+
+.card_acerto #mensagem_erro{
+  font-size: 20px;
 }
 
 .card_erro #mensagem_erro{
@@ -156,23 +190,9 @@ header{
 
 }
 
-.blure{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    backdrop-filter: blur(8px);
-    background: rgba(0, 123, 255, 0.3);
-}
-
 .buttonerro{
 
-    background-color: #63D4DF;
+    background-color: red;
     font-family: "Italiana", sans-serif;
     font-weight: bold;
     font-size: 16px;
@@ -186,6 +206,6 @@ header{
 }
 
 .buttonerro:hover {
-    background-color: #63D4DF; 
+    background-color: red; 
     transform: translateY(-1px);
 }
