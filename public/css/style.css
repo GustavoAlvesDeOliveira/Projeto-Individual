@@ -14,20 +14,6 @@ body{
     font-family: "Italiana", sans-serif;
 }
 
-.blure{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    backdrop-filter: blur(8px);
-    background: rgba(0, 123, 255, 0.3);
-}
-
 .FaixaTopo{
     display: flex;
     background-image: url(../assets/fundobege.png);
@@ -168,6 +154,20 @@ header{
     align-items: center;
     margin-top: 20px;
 
+}
+
+.blure{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 123, 255, 0.3);
 }
 
 .buttonerro{
