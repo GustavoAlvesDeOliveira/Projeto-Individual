@@ -58,6 +58,9 @@
             </div>
         </div>
     </div>
+    <div class="barra">
+        <div class="progresso"></div>
+    </div>
     <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
     <div id="jogo">
         <div id="infoQuestao" class="">
@@ -115,21 +118,21 @@
 </html>
 <script>
 
-    if (!sessionStorage.ID_USUARIO) {
-        blure.style.display = "flex"
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = `Faça login para acessar esta página`
+    // if (!sessionStorage.ID_USUARIO) {
+    //     blure.style.display = "flex"
+    //     cardErro.style.display = "block"
+    //     mensagem_erro.innerHTML = `Faça login para acessar esta página`
 
-        function opcao(parametro) {
+    //     function opcao(parametro) {
 
-            if (parametro == 'home') {
-                window.location.href = "index.html";
-            }
-            if (parametro == 'login') {
-                window.location.href = "login.html";
-            }
-        }
-    }
+    //         if (parametro == 'home') {
+    //             window.location.href = "index.html";
+    //         }
+    //         if (parametro == 'login') {
+    //             window.location.href = "login.html";
+    //         }
+    //     }
+    // }
 
     const listaDeQuestoes = [
 
