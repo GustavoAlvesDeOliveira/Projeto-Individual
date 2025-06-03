@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Culinária glacial</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/quiz.css">
     <link rel="icon" href="assets/logomenor.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="barra">
-        <div class="progresso"></div>
+        <div id="progresso" class="progresso"></div>
     </div>
     <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
     <div id="jogo">
@@ -105,7 +105,6 @@
                                     questão</button>
                             </div>
                             <div id="blur" class="blure">
-                                <h2>TMNC</h2>
                             </div>
                         </span>
                     </div>
@@ -242,6 +241,7 @@
     let certas = 0
     let pontuacaoFinal = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
+    let BarraProgresso = 0;
 
     function onloadEsconder() {
         document.getElementById('jogo').style.display = "none"
@@ -308,12 +308,12 @@
     }
 
     function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // 
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] 
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta 
 
-        const options = document.getElementsByName("option");
+        const options = document.getElementsByName("option"); 
 
-        let alternativaCorreta = null //
+        let alternativaCorreta = null 
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
@@ -328,11 +328,10 @@
                 certas++
                 numeroDaQuestaoAtual++
             } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                const wrongLabelId = option.labels[0].id
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                 numeroDaQuestaoAtual++
             }
         })
-        console.log(certas)
     }
 
 
@@ -342,13 +341,17 @@
 
         desmarcarRadioButtons()
 
-        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+        if (numeroDaQuestaoAtual <= quantidadeDeQuestoes - 1) {
             preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+            BarraProgresso += 10;
+            progresso.style.width = `${BarraProgresso}%`;
         }
         else {
             finalizarJogo()
         }
+        
     }
+    
 
     function desmarcarRadioButtons() {
         const options = document.getElementsByName("option");
@@ -364,10 +367,31 @@
         btnProx.disabled = true
         btnSubmeter.disabled = true
 
+        var emblemaVar = 'Tomara q funfa';
+        var tituloVar;
+
         alert("Cade o css??")
 
-        var emblemaVar = 'SOU UM DEUS'
-        var tituloVar = 'Do novo mundo'
+        if(certas <= 0 || certas == 1){
+            tituloVar = 'Glaceon perdidinha'
+        }
+        else if(certas == 2 || certas == 3){
+            tituloVar = 'Iniciante do Gelo'
+        }
+        else if(certas == 4 || certas == 5){
+            tituloVar = 'Aprendiz da Neve'
+        }
+        else if(certas == 6 || certas == 7){
+            tituloVar = 'Chef Gelado'
+        }
+        else if(certas == 8 || certas == 9){
+            tituloVar = 'Mestre Cuca Glacial'
+        }
+        else if(certas == 10 ){
+            tituloVar = 'Lenda da Cozinha Gélida'
+        }
+
+
 
         fetch("/emblema/cadastrar", {
             method: "POST",
