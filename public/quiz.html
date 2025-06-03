@@ -58,60 +58,57 @@
             </div>
         </div>
     </div>
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-        <div id="jogo">
-            <div id="infoQuestao" class="">
-                <span>Questão atual: <span id="qtdQuestoes"></span>
-                    <span id="DefinirEmblema" class=""></span>
-                    <div id="perguntaDaQuestaoAtual" class=""><span id="spanNumeroDaQuestaoAtual"></span> </div>
+    <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+    <div id="jogo">
+        <div id="infoQuestao" class="">
+            <span>Questão atual: <span id="qtdQuestoes"></span>
+                <span id="DefinirEmblema" class=""></span>
+                <div id="perguntaDaQuestaoAtual" class=""><span id="spanNumeroDaQuestaoAtual"></span> </div>
 
-                    <div id="perguntaDaQuestaoAtual" class="padding-8">
-                        <span id="spanQuestaoExibida" class="text-bold"></span>
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+
+                <div id="infoAlternativas" class="padding-8">
+
+                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    <div id="opcoes" class="flex-colunar padding-8">
+                        <span>
+
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quintaOpcao" name="option" class="radio" value="alternativaE" />
+                            <label for="quintaOpcao" class="option" id="labelOpcaoCinco"></label>
+                        </span>
+                        <span>
+
+                            <div id="botoes" class="flex-colunar padding-8">
+                                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
+                                    questão</button>
+                            </div>
+                            <div id="blur" class="blure">
+                                <h2>TMNC</h2>
+                            </div>
+                        </span>
                     </div>
-
-                    <div id="infoAlternativas" class="padding-8">
-
-                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                        <div id="opcoes" class="flex-colunar padding-8">
-                            <span>
-
-                                <input type="radio" id="primeiraOpcao" name="option" class="radio"
-                                    value="alternativaA" />
-                                <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                            </span>
-                            <span>
-                                <input type="radio" id="segundaOpcao" name="option" class="radio"
-                                    value="alternativaB" />
-                                <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                            </span>
-                            <span>
-                                <input type="radio" id="terceiraOpcao" name="option" class="radio"
-                                    value="alternativaC" />
-                                <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                            </span>
-                            <span>
-                                <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                                <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                            </span>
-                            <span>
-                                <input type="radio" id="quintaOpcao" name="option" class="radio" value="alternativaE" />
-                                <label for="quintaOpcao" class="option" id="labelOpcaoCinco"></label>
-                            </span>
-                            <span>
-
-                                <div id="botoes" class="flex-colunar padding-8">
-                                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
-                                        questão</button>
-                                </div>
-                                <div id="blur" class="blure">
-                                    <h2>TMNC</h2>
-                                </div>
-                            </span>
-                        </div>
-                    </div>
-            </div>
+                </div>
         </div>
+    </div>
 
 </body>
 
@@ -366,5 +363,49 @@
 
         alert("Cade o css??")
 
+        var emblemaVar = 'SOU UM DEUS'
+        var tituloVar = 'Do novo mundo'
+
+        fetch("/emblema/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                emblemaServer: emblemaVar,
+                tituloServer: tituloVar
+                
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardAcerto.style.display = "block";
+
+                    mensagem_acerto.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
+
+
+
+    function sumirMensagem() {
+        cardErro.style.display = "none";
+    }
+
 </script>
