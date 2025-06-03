@@ -11,7 +11,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
+<body onload="onloadEsconder()">
+
     <div class="FaixaTopo"></div>
     <div class="DivTitulo">
         <a href="index.html">
@@ -51,29 +52,319 @@
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
                 <div class="divbuttonerro">
-                <button class="buttonerro" onclick="opcao('home')">< Home</button><button class="buttonerro" style="background-color: #63D4DF;" onclick="opcao('login')"> Login > </button>
+                    <button class="buttonerro" onclick="opcao('home')">
+                        < Home</button><button class="buttonerro" onclick="opcao('login')"> Login > </button>
                 </div>
             </div>
         </div>
+    </div>
+        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+        <div id="jogo">
+            <div id="infoQuestao" class="">
+                <span>Questão atual: <span id="qtdQuestoes"></span>
+                    <span id="DefinirEmblema" class=""></span>
+                    <div id="perguntaDaQuestaoAtual" class=""><span id="spanNumeroDaQuestaoAtual"></span> </div>
 
+                    <div id="perguntaDaQuestaoAtual" class="padding-8">
+                        <span id="spanQuestaoExibida" class="text-bold"></span>
+                    </div>
 
+                    <div id="infoAlternativas" class="padding-8">
+
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                        <div id="opcoes" class="flex-colunar padding-8">
+                            <span>
+
+                                <input type="radio" id="primeiraOpcao" name="option" class="radio"
+                                    value="alternativaA" />
+                                <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                            </span>
+                            <span>
+                                <input type="radio" id="segundaOpcao" name="option" class="radio"
+                                    value="alternativaB" />
+                                <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                            </span>
+                            <span>
+                                <input type="radio" id="terceiraOpcao" name="option" class="radio"
+                                    value="alternativaC" />
+                                <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                            </span>
+                            <span>
+                                <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                                <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                            </span>
+                            <span>
+                                <input type="radio" id="quintaOpcao" name="option" class="radio" value="alternativaE" />
+                                <label for="quintaOpcao" class="option" id="labelOpcaoCinco"></label>
+                            </span>
+                            <span>
+
+                                <div id="botoes" class="flex-colunar padding-8">
+                                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
+                                        questão</button>
+                                </div>
+                                <div id="blur" class="blure">
+                                    <h2>TMNC</h2>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+        </div>
 
 </body>
+
 </html>
 <script>
+
     if (!sessionStorage.ID_USUARIO) {
         blure.style.display = "flex"
         cardErro.style.display = "block"
         mensagem_erro.innerHTML = `Faça login para acessar esta página`
 
-        function opcao(parametro){
+        function opcao(parametro) {
 
-            if(parametro == 'home'){
+            if (parametro == 'home') {
                 window.location.href = "index.html";
             }
-            if(parametro == 'login'){
+            if (parametro == 'login') {
                 window.location.href = "login.html";
             }
         }
+    }
+
+    const listaDeQuestoes = [
+
+        {
+            pergunta: "Qual Pokémon representa a identidade visual do site?",
+            alternativaA: "Eevee",
+            alternativaB: "Vaporeon",
+            alternativaC: "Glaceon",
+            alternativaD: "Sylveon",
+            alternativaE: "Umbreon",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Por que maracujá fresco pode ser melhor que suco industrializado?",
+            alternativaA: "Tem mais açúcar",
+            alternativaB: "Dá um sabor mais autêntico",
+            alternativaC: "É mais barato",
+            alternativaD: "Deixa a mousse mais mole",
+            alternativaE: "Já vem com gelatina",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Qual a ordem do Diagrama de uso que está na home?",
+            alternativaA: "Navegue pelo site > Quiz > Dashbord > Cadastro e Login",
+            alternativaB: "Navegue pelo site > Cadastro e Login > Dashbord > Quiz > Sair",
+            alternativaC: "Cadastro e Login > Dashbord > Quiz > Navegue pelo site",
+            alternativaD: "Quiz > Dashbord > Cadastro e Login > Navegue pelo site",
+            alternativaE: "Cadastro e Login > Navegue pelo site > Dashbord > Quiz ",
+            alternativaCorreta: "alternativaE"
+        },
+
+        {
+            pergunta: "Para que serve a gelatina incolor na mousse?",
+            alternativaA: "Firmar a textura",
+            alternativaB: "Adoçar",
+            alternativaC: "Dar sabor",
+            alternativaD: "Fazer espuma",
+            alternativaE: "Dar brilho",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual tema que meu site abrenge?",
+            alternativaA: "Pokémon apenas",
+            alternativaB: "Culinária e eevee",
+            alternativaC: "Mouse de maracujá",
+            alternativaD: "Panquecas e Glaceon",
+            alternativaE: "Culinária e Glaceon",
+            alternativaCorreta: "alternativaE"
+        },
+
+        {
+            pergunta: "Quais são as receitas recém adicionadas?",
+            alternativaA: "Frango KFC, mouse de morango e Salmão toscano",
+            alternativaB: "Mouse de morango, Frango e Tilápia",
+            alternativaC: "Tilápia, Mouse de maracujá e Frango Toscano",
+            alternativaD: "Frango KFC, Salmão toscano e Mouse de maracujá,",
+            alternativaE: "Tilápia KFC, Frango com maracujá e Mouse de morango",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Quantas receitas tem meu site?",
+            alternativaA: "10",
+            alternativaB: "15",
+            alternativaC: "14",
+            alternativaD: "18",
+            alternativaE: "11",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Qual a única receita de molho do site e minha favorita?",
+            alternativaA: "Molho cheddar",
+            alternativaB: "Molho Ketchup",
+            alternativaC: "Molho sweet chili",
+            alternativaD: "Molho mostarda e mel",
+            alternativaE: "Molho Barbecue",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual a única receita de autoria própria?",
+            alternativaA: "Salmão toscano",
+            alternativaB: "Poke",
+            alternativaC: "Mouse de maracujá",
+            alternativaD: "Vinagre",
+            alternativaE: "Tonkasu",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Por que o autor do site gosta da Glaceon?",
+            alternativaA: "'Exclusividade' e Beleza",
+            alternativaB: "Beleza, Leveza e evolução da eevee",
+            alternativaC: "Ela tem 7 letras no nome",
+            alternativaD: "Porque ele gosta de azul",
+            alternativaE: "Preguiça e comilança",
+            alternativaCorreta: "alternativaA"
+        },
+
+    ]
+
+    let numeroDaQuestaoAtual = 0
+    let certas = 0
+    let pontuacaoFinal = 0
+    let quantidadeDeQuestoes = listaDeQuestoes.length
+
+    function onloadEsconder() {
+        document.getElementById('jogo').style.display = "none"
+    }
+
+    function iniciarQuiz() {
+        document.getElementById('jogo').style.display = "flex"
+        document.getElementById('btnIniciarQuiz').style.display = "none"
+
+        preencherHTMLcomQuestaoAtual(0)
+
+        btnSubmeter.disabled = false
+        btnProx.disabled = true
+    }
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true)
+        const questaoAtual = listaDeQuestoes[index]
+        numeroDaQuestaoAtual = index
+        console.log("questaoAtual")
+        console.log(questaoAtual)
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1
+        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+        document.getElementById("labelOpcaoCinco").innerHTML = questaoAtual.alternativaE;
+
+
+    }
+    function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true
+
+        primeiraOpcao.disabled = opcaoEscolhida
+        segundaOpcao.disabled = opcaoEscolhida
+        terceiraOpcao.disabled = opcaoEscolhida
+        quartaOpcao.disabled = opcaoEscolhida
+        quintaOpcao.disabled = opcaoEscolhida
+
+    }
+
+    function submeter() {
+
+        const options = document.getElementsByName("option");
+        let hasChecked = false
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                hasChecked = true
+                break
+            }
+        }
+
+        if (!hasChecked) {
+            alert("Não há alternativas escolhidas. Escolha uma opção.")
+        } else {
+            btnSubmeter.disabled = true
+            btnProx.disabled = false
+
+            habilitarAlternativas(false)
+
+            checarResposta()
+        }
+    }
+
+    function checarResposta() {
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // 
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // 
+
+        const options = document.getElementsByName("option");
+
+        let alternativaCorreta = null //
+
+        options.forEach((option) => {
+            if (option.value === respostaQuestaoAtual) {
+                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+                alternativaCorreta = option.labels[0].id
+            }
+        })
+
+        options.forEach((option) => {
+            if (option.checked === true && option.value === respostaQuestaoAtual) {
+                pontuacaoFinal++
+                certas++
+                numeroDaQuestaoAtual++
+            } else if (option.checked && option.value !== respostaQuestaoAtual) {
+                const wrongLabelId = option.labels[0].id
+                numeroDaQuestaoAtual++
+            }
+        })
+        console.log(certas)
+    }
+
+
+    function avancar() {
+        btnProx.disabled = true
+        btnSubmeter.disabled = false
+
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        }
+        else {
+            finalizarJogo()
+        }
+    }
+
+    function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+            options[i].checked = false;
+        }
+    }
+
+    function finalizarJogo() {
+        document.getElementById('jogo').style.display = "none"
+        document.getElementById('blure').style.display = "flex"
+
+        btnProx.disabled = true
+        btnSubmeter.disabled = true
+
+        alert("Cade o css??")
+
     }
 </script>
