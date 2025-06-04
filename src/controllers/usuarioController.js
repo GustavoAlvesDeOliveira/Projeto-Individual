@@ -26,7 +26,10 @@ function autenticar(req, res) {
                                         nome: resultadoAutenticar[0].nome,
                                         sobrenome: resultadoAutenticar[0].sobrenome,
                                         senha: resultadoAutenticar[0].senha,
-                                        genero: resultadoAutenticar[0].genero
+                                        genero: resultadoAutenticar[0].genero,
+                                        titulo: resultadoAutenticar[0].titulo,
+                                        emblema: resultadoAutenticar[0].emblema
+
                                         
                                     });
                                 
