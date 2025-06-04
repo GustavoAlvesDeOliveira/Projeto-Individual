@@ -1,14 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
+var graficosController = require("../controllers/graficosController");
+
 router.get("/graficotituloquiz", function (req, res) {
-    // função a ser chamada quando acessar /carros/cadastrar
     graficosController.graficotituloquiz(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    // função a ser chamada quando acessar /carros/listar
-    graficosController.listar(req, res);
-});
+router.get("/barradeprogresso", function (req,res) {
+    graficosController.barradeprogresso(req, res);
+})
 
 module.exports = router;

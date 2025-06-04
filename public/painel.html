@@ -54,100 +54,116 @@
                 <span id="mensagem_erro"></span>
                 <div class="divbuttonerro">
                     <button class="buttonerro" onclick="opcao('home')">
-                        < Home</button> <button class="buttonerro"  onclick="opcao('login')"> Login > </button>
+                        < Home</button> <button class="buttonerro" onclick="opcao('login')"> Login > </button>
                 </div>
             </div>
         </div>
-    
+
     </div>
     <div class="container">
-    <h3>DashBoard</h3>
-    <hr>
+        <h3>DashBoard</h3>
+        <hr>
+        <h3></h3>
+        <div class="barra">
+            <div class="progresso" id="processo"></div>
+        </div>
+        <hr>
         <div class="graficos Resultadoquiz">
             <h3>Resultado de título do quiz:</h3>
             <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuiz"></canvas>
         </div>
     </div>
-<button onclick="testar()">testa</button>
 </body>
 
 </html>
 <script>
 
-
-    function testar(){
-        fetch(`/emblema/listar`, {
-      method: "GET"
+    fetch(`graficos/barradeprogresso`, {
+        method: "GET"
     })
-      .then(res => {
-        res.json().then(json => {
-            
-    const painel = json[0];
-    console.log(painel)
-    const labels1 = [
-    "Total do site",
-    ];
-    
-        const data1 ={
-        labels: labels1,
-        datasets: [{
-            label: '🥣Glaceon perdidinha🥣',
-            backgroundColor: 'rgb(186,230,253)',
-            borderColor: 'rgb(175, 216, 230)',
-            data: [painel.TituloQuiz1],
-        },
-        {
-            label: '🧊Iniciante do Gelo🧊',
-            backgroundColor: 'rgb(77,208,225)',
-            borderColor: 'rgb(175, 216, 230)',
-            data: [painel.TituloQuiz2],
-        },
-        {
-            label: '🌨️Aprendiz da Neve🌨️',
-            backgroundColor: 'rgb(56,189,248)',
-            borderColor: 'rgb(175, 216, 230)',
-            data: [painel.TituloQuiz3],
-        },       
-        {
-            label: '❄️Chef Gelado❄️',
-            backgroundColor: 'rgb(37, 99, 235)',
-            borderColor: 'rgb(175, 216, 230)',
-            data: [painel.TituloQuiz4],
-        },
-        {
-            label: '💠Mestre Cuca Glacial💠',
-            backgroundColor: 'rgb(13,71,161)',
-            borderColor: 'rgb(37,99,235)',
-            data: [painel.TituloQuiz5],
-        },
-        {
-            label: '🌟👑🌬️ Lenda da Cozinha Gélida🌬️ 👑🌟',
-            backgroundColor: 'rgb(255,143,0)',
-            borderColor: 'rgb(175, 216, 230)',
-            data: [painel.TituloQuiz6],
-        },               
-    ]
-    };
+        .then(res => {
+            res.json().then(json => {
+                const NumCadastro = json[0];
+                console.log(NumCadastro);
+                let BarraProgresso;
+                let calc = 100 / 59;
+                BarraProgresso = calc * NumCadastro.total;
+                processo.style.width = `${BarraProgresso}%`;
+            })
+      })
 
-    const config1 = {
-    type: 'bar',
-    data: data1,
-    options: {}
-    };
 
-    const myChart = new Chart(
-    document.getElementById('ChartResultadoQuiz'),
-    config1
-);
-
+        fetch(`/graficos/graficotituloquiz`, {
+            method: "GET"
         })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-   
+                .then(res => {
+                    res.json().then(json => {
 
-    }
+                        const painel = json[0];
+                        console.log(painel)
+                        const labels1 = [
+                            "Total do site",
+                        ];
+
+                        const data1 = {
+                            labels: labels1,
+                            datasets: [{
+                                label: '🥣Glaceon perdidinha🥣',
+                                backgroundColor: 'rgb(186,230,253)',
+                                borderColor: 'rgb(175, 216, 230)',
+                                data: [painel.TituloQuiz1],
+                            },
+                            {
+                                label: '🧊Iniciante do Gelo🧊',
+                                backgroundColor: 'rgb(77,208,225)',
+                                borderColor: 'rgb(175, 216, 230)',
+                                data: [painel.TituloQuiz2],
+                            },
+                            {
+                                label: '🌨️Aprendiz da Neve🌨️',
+                                backgroundColor: 'rgb(56,189,248)',
+                                borderColor: 'rgb(175, 216, 230)',
+                                data: [painel.TituloQuiz3],
+                            },
+                            {
+                                label: '❄️Chef Gelado❄️',
+                                backgroundColor: 'rgb(37, 99, 235)',
+                                borderColor: 'rgb(175, 216, 230)',
+                                data: [painel.TituloQuiz4],
+                            },
+                            {
+                                label: '💠Mestre Cuca Glacial💠',
+                                backgroundColor: 'rgb(13,71,161)',
+                                borderColor: 'rgb(37,99,235)',
+                                data: [painel.TituloQuiz5],
+                            },
+                            {
+                                label: '🌟👑🌬️ Lenda da Cozinha Gélida🌬️ 👑🌟',
+                                backgroundColor: 'rgb(255,143,0)',
+                                borderColor: 'rgb(175, 216, 230)',
+                                data: [painel.TituloQuiz6],
+                            },
+                            ]
+                        };
+
+                        const config1 = {
+                            type: 'bar',
+                            data: data1,
+                            options: {}
+                        };
+
+                        const myChart = new Chart(
+                            document.getElementById('ChartResultadoQuiz'),
+                            config1
+                        );
+
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+
 
     // if (!sessionStorage.ID_USUARIO) {
     //     if (!sessionStorage.ID_USUARIO) {
