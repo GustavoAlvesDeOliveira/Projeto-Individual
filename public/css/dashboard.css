@@ -42,6 +42,7 @@ hr{
     height: 25px;
     background-color: black;
     border-radius: 50px;
+    margin-bottom: 15px;
 }
 
 .progresso{
@@ -52,4 +53,31 @@ hr{
     border-radius: 50px;
     background-size: cover;
     background-position: center;
+}
+
+.KPINumcadastro{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-image: url(../assets/flocoazul.gif);
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000;
+    font-size: 1.5rem;
+}
+
+.tituloprogresso{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.tituloprogresso h3{
+    margin: 0;
 }

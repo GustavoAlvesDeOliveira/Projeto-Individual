@@ -63,10 +63,12 @@
     <div class="container">
         <h3>DashBoard</h3>
         <hr>
-        <h3></h3>
+        
+        <h3>Recrutando chefs gelados! Progresso dos cadastros rumo aos 59 da sala ❄️</h3>
         <div class="barra">
             <div class="progresso" id="processo"></div>
         </div>
+        <div class="KPINumcadastro"><h4 id="KPIvalor">Total: </h4></div>
         <hr>
         <div class="graficos Resultadoquiz">
             <h3>Resultado de título do quiz:</h3>
@@ -77,6 +79,7 @@
 
 </html>
 <script>
+
 
     fetch(`graficos/barradeprogresso`, {
         method: "GET"
@@ -89,6 +92,8 @@
                 let calc = 100 / 59;
                 BarraProgresso = calc * NumCadastro.total;
                 processo.style.width = `${BarraProgresso}%`;
+
+                KPIvalor.innerHTML += `<br> ${NumCadastro.total} `
             })
       })
 
