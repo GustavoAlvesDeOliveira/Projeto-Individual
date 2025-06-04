@@ -93,23 +93,43 @@
         var nome = sessionStorage.NOME_USUARIO;
         var Lsobrenome = sessionStorage.SOBRENOME;
         var genero = sessionStorage.GENERO;
+        var titulo = sessionStorage.TITULO;
+        var foto = sessionStorage.EMBLEMA;
 
-        console.log(genero)
+    
+
+        if(titulo == 'null' || foto == 'null'){
+            titulo = ''
+            foto = ''
+        }
+
 
         if (genero == 'Masculino') {
-            h2bemvindo.innerHTML = ` Seja Bem-Vindo! ${nome} ${Lsobrenome} `
+            h2bemvindo.innerHTML = ` Seja Bem-Vindo!
+                                    <br><br>${nome} ${Lsobrenome} 
+                                    <br> ${titulo}
+                                    <br> ${foto}`
         }
         else if (genero == 'Feminino') {
-            h2bemvindo.innerHTML = ` Seja Bem-Vinda! ${nome} ${Lsobrenome}`
+            h2bemvindo.innerHTML = ` Seja Bem-Vinda!
+                                    <br><br>${nome} ${Lsobrenome} 
+                                    <br> ${titulo}
+                                    <br> ${foto}`
         }
         else {
             h2bemvindo.innerHTML = ` Seja Bem-Vinde!
                                     <br><br>${nome} ${Lsobrenome} 
-                                    <br> 🌟👑Lenda da Cozinha Gélida👑🌟`
+                                    <br> ${titulo}
+                                    <br> ${foto}`
         }
     }
     else {
-        h2bemvindo.innerHTML = `Seja Bem-Vindo(a)! Faça login para melhor experiência`
+        h2bemvindo.innerHTML = `Seja Bem-Vindo(a)!
+                                <br><br> Faça login para melhor experiência!
+                                <br><button style="margin-top: 20px;"onclick="facalogin()">Faça Login</button>`
     }
 
+    function facalogin(){
+        window.location.href = "login.html";
+    }
 </script>

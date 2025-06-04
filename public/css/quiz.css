@@ -1,21 +1,98 @@
 
-.barra{
+
+.container{
     display: flex;
+    width: 40%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    background-image: url(../assets/fundobege.png);
+    padding: 20px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.quiz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.barra{
+    display: none;
     width: 100%;
-    height: 8px;
+    height: 25px;
     background-color: black;
+    border-radius: 50px;
 }
 
 .progresso{
-    display: flex;
+    display: none;
     width: 0%;
-    height: 8px;
-    background-color: green;
+    height: 25px;
+    background-image: url(../assets/flocoazul.gif);
+    border-radius: 50px;
+    background-size: cover;
+    background-position: center;
 }
 
+.QuizPerguntas{
+    margin-top: 15px;
+    text-align: center;
+}
 
 .emblemasIMG{
     width: 55px;
     height: 55px;
     border-radius: 100%;
+}
+#infoAlternativas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.alternativas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    margin: 20px 20px;
+}
+
+.buttonsquiz{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+button {
+    background-color: #63D4DF;
+    font-family: "Italiana", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #63D4DF; 
+    transform: translateY(-1px);
+}
+
+.instrucoes{
+
 }

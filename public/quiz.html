@@ -58,24 +58,41 @@
             </div>
         </div>
     </div>
-    <div class="barra">
-        <div id="progresso" class="progresso"></div>
+
+    <div class="container">
+    <div class="instrucoes" id="instrucoes">
+        <h3 style="text-align: center;">Quiz Cúlinaria Glacial</h3>
+        <h4 style="text-align: center;">Aqui você testa os conhecimentos sobre o meu projeto e site.
+            <br>Tenho algumas instruções: </h4>
+            <ul>
+                <li>São 10 questões.</li>
+                <li> Ao terminar você ganha um título e uma imagem de acordo com os acertos:<br>
+                    0-1 🥣Glaceon perdidinha🥣<br>
+                    2-3	🧊Iniciante do Gelo🧊<br>
+                    4-5	🌨️Aprendiz da Neve🌨️<br>
+                    6-7	❄️Chef Gelado❄️<br>
+                    8-9	💠Mestre Cuca Glacial💠<br>
+                    10	🌟👑🧾Lenda da Cozinha Gélida🧾👑🌟<br>
+                    *Imagem é surpresa*
+                </li>
+                <li>Só pode ser feito <span style="color: red;"> UMA</span> vez. (Estude o site antes).</li>
+            </ul>
+        </h4>
+
+    </div>
+    <div class="barra" id="barra">
+        <div id="progresso" class="progresso" id="progresso"></div>
     </div>
     <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-    <div id="jogo">
-        <div id="infoQuestao" class="">
-            <span>Questão atual: <span id="qtdQuestoes"></span>
-                <span id="DefinirEmblema" class=""></span>
-                <div id="perguntaDaQuestaoAtual" class=""><span id="spanNumeroDaQuestaoAtual"></span> </div>
-
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold"></span>
+    <div id="jogo" class="quiz">
+         <div id="perguntaDaQuestaoAtual" class="QuizPerguntas"><span id="spanNumeroDaQuestaoAtual"></span> </div>
+                <div id="perguntaDaQuestaoAtual" class="QuizPerguntas">
+                    <span id="spanQuestaoExibida" class="QuizPerguntas" ></span>
                 </div>
 
-                <div id="infoAlternativas" class="padding-8">
+                <div id="infoAlternativas" >
 
-                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                    <div id="opcoes" class="flex-colunar padding-8">
+                    <div id="opcoes" class="alternativas">
                         <span>
 
                             <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
@@ -97,25 +114,35 @@
                             <input type="radio" id="quintaOpcao" name="option" class="radio" value="alternativaE" />
                             <label for="quintaOpcao" class="option" id="labelOpcaoCinco"></label>
                         </span>
-                        <span>
-
-                            <div id="botoes" class="flex-colunar padding-8">
-                                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
-                                    questão</button>
-                            </div>
-                        </span>
                     </div>
                 </div>
+        <div id="botoes" class="buttonsquiz">
+            <button onclick="submeter()" id="btnSubmeter">Confirmar resposta</button>
+            <button onclick="avancar()" id="btnProx" disabled>Próxima pergunta</button>
         </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="blures" class="blure">
+    <div class="alerta_erro" style="align-self: start;">
+        <div class="card_acerto" id="cardAcerto2"> 
+        <p id="mensagem_acerto2"></p>
+        <div class="divbuttonacerto">
+        <button class="buttonacerto" onclick="opcaoAcerto('home')"> < Home</button> 
+        <button class="buttonacerto" onclick="opcaoAcerto('Dashboard')"> Dashboard > </button>
+        </div>
+    </div>
+    </div>
     </div>
 
     <div id="blur" class="blure">
     <div class="alerta_erro" style="align-self: start;">
         <div class="card_acerto" id="cardAcerto">
         <h2>🎉 Parabéns!</h2>
+        <p id="acertos">Acertos: </p>
         <p id="titulo">Você conseguiu o Título: </p>
-        <p>Agora eles aparecerão na Home</p>
+        <p>Saia da sua conta e volte, eles estarão na Home</p>
         <p>Seus dados estão no Dashboard <br>
             vai lá olhar! </p>
         <p>Obrigado por participar!</p>
@@ -124,6 +151,7 @@
         <button class="buttonacerto" onclick="opcaoAcerto('Dashboard')"> Dashboard > </button>
             <span id="mensagem_acerto"></span>
         </div>
+    </div>
     </div>
     </div>
 </body>
@@ -144,6 +172,21 @@
     //         }
     //         if (parametro == 'login') {
     //             window.location.href = "login.html";
+    //         }
+    //     }
+    // }
+    // else if(sessionStorage.TITULO != 'null'){
+    //     document.getElementById('blures').style.display = "flex"
+    //     cardAcerto2.style.display = "block"
+    //     mensagem_acerto2.innerHTML = `Você já fez o quiz! Só é permitido 1° e seu título foi: ${sessionStorage.TITULO}`
+
+    //     function opcao(parametro) {
+
+    //         if (parametro == 'home') {
+    //             window.location.href = "index.html";
+    //         }
+    //         if (parametro == 'Dashboard') {
+    //             window.location.href = "painel.html";
     //         }
     //     }
     // }
@@ -263,7 +306,10 @@
     }
 
     function iniciarQuiz() {
+        document.getElementById('instrucoes').style.display = "none"
         document.getElementById('jogo').style.display = "flex"
+        document.getElementById('barra').style.display = "flex"
+        document.getElementById('progresso').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
 
         preencherHTMLcomQuestaoAtual(0)
@@ -278,7 +324,6 @@
         numeroDaQuestaoAtual = index
         console.log("questaoAtual")
         console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1
         document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
         document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
         document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
@@ -312,8 +357,9 @@
 
         if (!hasChecked) {
             alert("Não há alternativas escolhidas. Escolha uma opção.")
-        } else {let fkusuarioVara = sessionStorage.ID_USUARIO;
-console.log(fkusuarioVara)
+        } else {
+
+
             btnSubmeter.disabled = true
             btnProx.disabled = false
 
@@ -391,27 +437,53 @@ console.log(fkusuarioVara)
         alert("Cade o css??")
 
         if (certas == 0 || certas == 1) {
-            tituloVar = '❄️Glaceon perdidinha❄️'
-            titulo.innerHTML += '❄️Glaceon perdidinha❄️'
-            titulo.innerHTML += `<br>Descrição: Talvez não prestou atenção o suficiente no meu site...<br>
+            tituloVar = '🥣Glaceon perdidinha🥣'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '🥣Glaceon perdidinha🥣'
+            titulo.innerHTML += `<br>Descrição: Talvez não prestou atenção o suficiente no meu site, aproveite e procure as respostas no site!<br>
             <br>Junto a este título você ganhou esse emblema: <br>
             <img class="emblemasIMG" src="assets/perfil.jpg">`
 
         }
         else if (certas == 2 || certas == 3) {
             tituloVar = '🧊Iniciante do Gelo🧊'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '🧊Iniciante do Gelo🧊'
+            titulo.innerHTML += `<br>Descrição: Sua tentativa não foi em vão, aproveite e procure as respostas no site!<br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
         }
         else if (certas == 4 || certas == 5) {
             tituloVar = '🌨️Aprendiz da Neve🌨️'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '🌨️Aprendiz da Neve🌨️'
+            titulo.innerHTML += `<br>Descrição: Sabe e não sabe do meu site, fico feliz que tentou! <br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
         }
         else if (certas == 6 || certas == 7) {
             tituloVar = '❄️Chef Gelado❄️'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '❄️Chef Gelado❄️'
+            titulo.innerHTML += `<br>Descrição: Este é o caminho para se tornar um verdadeiro chef.<br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
         }
         else if (certas == 8 || certas == 9) {
             tituloVar = '💠Mestre Cuca Glacial💠'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '💠Mestre Cuca Glacial💠'
+            titulo.innerHTML += `<br>Descrição: Incrível! mostrou conhecimentos do meu site!<br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
         }
         else if (certas == 10) {
-            tituloVar = '🌟👑💠Lenda da Cozinha Gélida💠👑🌟'
+            tituloVar = '🌟👑🧾Lenda da Cozinha Gélida🧾👑🌟'
+            acertos.innerHTML+= certas
+            titulo.innerHTML += '🌟👑🧾Lenda da Cozinha Gélida🧾👑🌟'
+            titulo.innerHTML += `<br>Descrição: Impressionante!!! Você realmente aprendeu tudo do meu projeto. Seu nome aparecerá na DashBoard<br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
         }
 
         opcaoAcerto()
