@@ -7,28 +7,33 @@
 }
 .Userlogado{
    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 750px;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 750px;
     
+}
+
+#h2bemvindo{
+   
 }
 #logado{
    margin-left: 20px;
 }
 .imgreceitas{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
  
 }
 .imgreceitas a{
    text-decoration: none;
 }
 .Duasreceitas{
-    display: flex;
-    flex-direction: column;
-    
+   display: flex;
+   flex-direction: column;
+   
 }
 
 .Duasreceitas a{
@@ -36,19 +41,19 @@
 }
 
 #mousse { 
-    display: flex;
-    width: 500px;
-    height: 500px;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    justify-content: end;
-    background-repeat: no-repeat;
-    background-position: cover;
-    background-size: cover;
-    background-image: url(../assets/receitas/mousse.png);
-    margin-right: 10px;
-    transition: 0.3s;
+   display: flex;
+   width: 500px;
+   height: 500px;
+   flex-direction: column;
+   align-items: center;
+   font-size: 25px;
+   justify-content: end;
+   background-repeat: no-repeat;
+   background-position: cover;
+   background-size: cover;
+   background-image: url(../assets/receitas/mousse.png);
+   margin-right: 10px;
+   transition: 0.3s;
  }
 
 #mousse:hover{
@@ -64,19 +69,19 @@
 }
 
 #salmao { 
-    display: flex;
-    width: 250px;
-    height: 250px;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    justify-content: end;
-    background-repeat: no-repeat;
-    background-position: cover;
-    background-size: cover;
-    background-image: url(../assets/receitas/salmao.jpg);
-    margin-bottom: 10px;
-    transition: 0.3s;
+   display: flex;
+   width: 250px;
+   height: 250px;
+   flex-direction: column;
+   align-items: center;
+   font-size: 25px;
+   justify-content: end;
+   background-repeat: no-repeat;
+   background-position: cover;
+   background-size: cover;
+   background-image: url(../assets/receitas/salmao.jpg);
+   margin-bottom: 10px;
+   transition: 0.3s;
  }
 
 #salmao:hover{
@@ -92,18 +97,18 @@
 }
 
  #frangokfc{
-    display: flex;
-    width: 250px;
-    height: 250px;
-    flex-direction: column;
-    align-items: center;
-    font-size: 25px;
-    justify-content: end;
-    background-repeat: no-repeat;
-    background-position: cover;
-    background-size: cover;
-    background-image: url(../assets/receitas/frangokfc.jpg);
-    transition: 0.3s;
+   display: flex;
+   width: 250px;
+   height: 250px;
+   flex-direction: column;
+   align-items: center;
+   font-size: 25px;
+   justify-content: end;
+   background-repeat: no-repeat;
+   background-position: cover;
+   background-size: cover;
+   background-image: url(../assets/receitas/frangokfc.jpg);
+   transition: 0.3s;
 
  }
 

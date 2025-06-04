@@ -14,7 +14,7 @@ function cadastrar(req, res) {
 
 
     if (emblema == undefined || titulo == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+        res.status(400).send("Seu titulo está undefined!");
     }
 
     emblemaModel.cadastrar(emblema,titulo).then(function(resposta){

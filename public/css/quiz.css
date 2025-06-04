@@ -12,3 +12,10 @@
     height: 8px;
     background-color: green;
 }
+
+
+.emblemasIMG{
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+}

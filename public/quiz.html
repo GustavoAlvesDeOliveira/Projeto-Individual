@@ -48,12 +48,12 @@
     </header>
 
     <div id="blure" class="blure">
-        <div class="alerta_erro">
+        <div class="alerta_erro" style="align-self: center;">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
                 <div class="divbuttonerro">
-                    <button class="buttonerro" onclick="opcao('home')">
-                        < Home</button><button class="buttonerro" onclick="opcao('login')"> Login > </button>
+                    <button class="buttonerro" onclick="opcao('home')">< Home</button> 
+                        <button class="buttonerro" onclick="opcao('login')"> Login > </button>
                 </div>
             </div>
         </div>
@@ -104,18 +104,33 @@
                                 <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
                                     questão</button>
                             </div>
-                            <div id="blur" class="blure">
-                            </div>
                         </span>
                     </div>
                 </div>
         </div>
     </div>
 
+    <div id="blur" class="blure">
+    <div class="alerta_erro" style="align-self: start;">
+        <div class="card_acerto" id="cardAcerto">
+        <h2>🎉 Parabéns!</h2>
+        <p id="titulo">Você conseguiu o Título: </p>
+        <p>Agora eles aparecerão na Home</p>
+        <p>Seus dados estão no Dashboard <br>
+            vai lá olhar! </p>
+        <p>Obrigado por participar!</p>
+        <div class="divbuttonacerto">
+        <button class="buttonacerto" onclick="opcaoAcerto('home')">< Home</button> 
+        <button class="buttonacerto" onclick="opcaoAcerto('Dashboard')"> Dashboard > </button>
+            <span id="mensagem_acerto"></span>
+        </div>
+    </div>
+    </div>
 </body>
 
 </html>
 <script>
+
 
     // if (!sessionStorage.ID_USUARIO) {
     //     blure.style.display = "flex"
@@ -297,7 +312,8 @@
 
         if (!hasChecked) {
             alert("Não há alternativas escolhidas. Escolha uma opção.")
-        } else {
+        } else {let fkusuarioVara = sessionStorage.ID_USUARIO;
+console.log(fkusuarioVara)
             btnSubmeter.disabled = true
             btnProx.disabled = false
 
@@ -308,12 +324,12 @@
     }
 
     function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta 
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual]
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta
 
-        const options = document.getElementsByName("option"); 
+        const options = document.getElementsByName("option");
 
-        let alternativaCorreta = null 
+        let alternativaCorreta = null
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
@@ -349,9 +365,9 @@
         else {
             finalizarJogo()
         }
-        
+
     }
-    
+
 
     function desmarcarRadioButtons() {
         const options = document.getElementsByName("option");
@@ -362,35 +378,43 @@
 
     function finalizarJogo() {
         document.getElementById('jogo').style.display = "none"
-        document.getElementById('blure').style.display = "flex"
+        document.getElementById('blur').style.display = "flex"
+        cardAcerto.style.display = "block"
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
 
-        var emblemaVar = 'Tomara q funfa';
-        var tituloVar;
-
+        let emblemaVar = 'Tomara q funfa';
+        let tituloVar;
+        let fkusuarioVar = sessionStorage.ID_USUARIO;
+        
         alert("Cade o css??")
 
-        if(certas <= 0 || certas == 1){
-            tituloVar = 'Glaceon perdidinha'
+        if (certas == 0 || certas == 1) {
+            tituloVar = '❄️Glaceon perdidinha❄️'
+            titulo.innerHTML += '❄️Glaceon perdidinha❄️'
+            titulo.innerHTML += `<br>Descrição: Talvez não prestou atenção o suficiente no meu site...<br>
+            <br>Junto a este título você ganhou esse emblema: <br>
+            <img class="emblemasIMG" src="assets/perfil.jpg">`
+
         }
-        else if(certas == 2 || certas == 3){
-            tituloVar = 'Iniciante do Gelo'
+        else if (certas == 2 || certas == 3) {
+            tituloVar = '🧊Iniciante do Gelo🧊'
         }
-        else if(certas == 4 || certas == 5){
-            tituloVar = 'Aprendiz da Neve'
+        else if (certas == 4 || certas == 5) {
+            tituloVar = '🌨️Aprendiz da Neve🌨️'
         }
-        else if(certas == 6 || certas == 7){
-            tituloVar = 'Chef Gelado'
+        else if (certas == 6 || certas == 7) {
+            tituloVar = '❄️Chef Gelado❄️'
         }
-        else if(certas == 8 || certas == 9){
-            tituloVar = 'Mestre Cuca Glacial'
+        else if (certas == 8 || certas == 9) {
+            tituloVar = '💠Mestre Cuca Glacial💠'
         }
-        else if(certas == 10 ){
-            tituloVar = 'Lenda da Cozinha Gélida'
+        else if (certas == 10) {
+            tituloVar = '🌟👑💠Lenda da Cozinha Gélida💠👑🌟'
         }
 
+        opcaoAcerto()
 
 
         fetch("/emblema/cadastrar", {
@@ -400,39 +424,37 @@
             },
             body: JSON.stringify({
                 emblemaServer: emblemaVar,
-                tituloServer: tituloVar
-                
+                tituloServer: tituloVar,
+                fkusuarioServer: fkusuarioVar
+
             }),
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    cardAcerto.style.display = "block";
-
-                    mensagem_acerto.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             });
 
+
         return false;
+
+        
     }
 
 
+    function opcaoAcerto(parametro) {
 
+        if (parametro == 'home') {
+            window.location.href = "index.html";
+        }
+        if (parametro == 'Dashboard') {
+            window.location.href = "painel.html";
+        }
+    }
     function sumirMensagem() {
         cardErro.style.display = "none";
     }
+
 
 </script>

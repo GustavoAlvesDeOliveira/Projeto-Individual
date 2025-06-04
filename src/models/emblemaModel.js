@@ -2,15 +2,15 @@ var database = require("../database/config")
 
 function listar() {
     var instrucao = `
-        SELECT * FROM carro;
+        SELECT * FROM ;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function cadastrar(emblema, titulo) {
+function cadastrar(emblema, titulo, fkusuario) {
     var instrucao = `
-        INSERT INTO resultado (emblema,titulo) VALUES ('${emblema}' , '${titulo}');
+        INSERT INTO resultado (emblema,titulo,fkusuario) VALUES ('${emblema}' , '${titulo}' , '${fkusuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
