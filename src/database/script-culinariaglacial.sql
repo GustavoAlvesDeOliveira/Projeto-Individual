@@ -28,7 +28,7 @@ create table  resultado_quiz(
 	fkusuario int not null,
     fkquiz int not null,
 	emblema varchar(100),
-	titulo varchar(30),
+	titulo varchar(40),
     acertos char(2),
     erros char(2),
     primary key (fkusuario,fkquiz),
@@ -49,10 +49,27 @@ select * from resultado_quiz;
 -- Juntando tudo.
 
 Select * from usuario
-join resultado_quiz 
+left join resultado_quiz 
 on fkusuario = id 
-join quiz 
+left join quiz 
 on fkquiz = idquiz;
 
--- selects do meu projeto individual
 
+-- Selects do meu projeto individual
+-- autenticar() usado pra login no web data viz com um acrescento de um left join pra colocar mais coisas no sessionstorage
+select id, nome, sobrenome, email, genero, titulo, emblema
+from usuario
+left join resultado_quiz 
+on fkusuario = id;
+
+-- graficotituloquiz() para contar quantos titulos tem de cada.
+select
+(select count(titulo) from resultado_quiz where titulo like '🥣Glaceon perdidinha🥣') as TituloQuiz1,
+(select count(titulo) from resultado_quiz where titulo like '🧊Iniciante do Gelo🧊') as TituloQuiz2,
+(select count(titulo) from resultado_quiz where titulo like '🌨️Aprendiz da Neve🌨️') as TituloQuiz3,
+(select count(titulo) from resultado_quiz where titulo like '❄️Chef Gelado❄️') as TituloQuiz4,
+(select count(titulo) from resultado_quiz where titulo like '💠Mestre Cuca Glacial💠') as TituloQuiz5,
+(select count(titulo) from resultado_quiz where titulo like '🌟👑🌬️ Lenda da Cozinha Gélida🌬️👑🌟') as TituloQuiz6;
+
+-- barradeprogresso() usei para mostrar uma barra de progresso do número de cadastro, objetivo de 59 cadastros.
+select count(id) as total from usuario;
