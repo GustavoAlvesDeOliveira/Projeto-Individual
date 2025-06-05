@@ -42,6 +42,13 @@
                 <span id="mensagem_erro"></span>
             </div>
         </div>
+
+        <div class="alerta_erro">
+        <div class="card_acerto" id="cardAcerto">
+          <span id="mensagem_acerto"></span>
+        </div>
+        </div>
+
         <div class="Hcadastro">
             <h3>Seja bem-vindo(a)! <br> Acesse sua conta e descubra receitas incríveis com a ajudante mais fofa do mundo</h3>
         </div>
@@ -79,7 +86,6 @@
 </html>
 <script>
 
-
     function entrar() {
         aguardar();
 
@@ -112,8 +118,11 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
+
             if (resposta.ok) {
                 console.log(resposta);
+                cardAcerto.style.display = "block";
+                mensagem_acerto.innerHTML = "Login realizado com sucesso!";
 
                 resposta.json().then(json => {
                     console.log(json);
