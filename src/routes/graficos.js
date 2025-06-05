@@ -11,4 +11,7 @@ router.get("/barradeprogresso", function (req,res) {
     graficosController.barradeprogresso(req, res);
 })
 
+router.get("/graficoidade", function (req,res) {
+    graficosController.graficoidade(req, res);
+})
 module.exports = router;

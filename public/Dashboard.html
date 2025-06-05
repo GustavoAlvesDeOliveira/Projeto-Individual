@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culinária glacial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="icon" href="assets/logomenor.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="FaixaTopo"></div>
+    <div class="DivTitulo">
+        <a href="index.html">
+            <div class="imgtitulo">
+                <img src="assets/Logo.png">
+            </div>
+        </a>
+        <div class="titulo">
+            <h1>Culinária Glacial</h1>
+        </div>
+        <div class="DivLogin">
+            <a href="login.html">Login</a>
+            <p id="Sair"></p>
+        </div>
+    </div>
+
+    <!--Header e seus elementos-->
+
+    <header>
+        <div class="Elementosheader" id="BLUR1">
+            <hr>
+            <a href="index.html"> <i class='bx bx-home'></i> Home </a>
+            <hr>
+            <a href="receitas.html"><i class='bx bx-fork'></i>Receitas</a>
+            <hr>
+            <a href="sobremim.html"><i class='bx bxs-user'></i>Sobre Mim</a>
+            <hr>
+            <a href="quiz.html"><i class='bx bx-file-find'></i>Quiz</a>
+            <hr>
+            <a href="Dashboard.html"><i class='bx bx-bar-chart-alt'></i>Dashboard</a>
+            <hr>
+        </div>
+    </header>
+
+    <div id="blure" class="blure">
+        <div class="alerta_erro" style="align-self: center;">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+                <div class="divbuttonerro">
+                    <button class="buttonerro" onclick="opcao('home')">
+                        < Home</button> <button class="buttonerro" onclick="opcao('login')"> Login > </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <h3>DashBoard</h3>
+        <hr>
+
+        <h3>Recrutando chefs gelados! Progresso dos cadastros rumo aos 59 da sala ❄️</h3>
+        <div class="barra">
+            <div class="progresso" id="processo"></div>
+        </div>
+        <div class="KPINumcadastro">
+            <h4 id="KPIvalor">Total: </h4>
+        </div>
+        <hr>
+        <div class="grafico">
+            <h3>Resultado de título do quiz:</h3>
+            <canvas class="ChartPieidade" id="ChartPieidade"></canvas>
+        </div>
+        <div class="graficos Resultadoquiz">
+            <h3>Resultado de título do quiz:</h3>
+            <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuiz"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+
+    fetch(`graficos/barradeprogresso`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+                const NumCadastro = json[0];
+                console.log(NumCadastro);
+                let BarraProgresso;
+                let calc = 100 / 59;
+                BarraProgresso = calc * NumCadastro.total;
+                processo.style.width = `${BarraProgresso}%`;
+
+                KPIvalor.innerHTML += `<br> ${NumCadastro.total} `
+            })
+        })
+
+    fetch(`/graficos/graficoidade`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+                const idade = json[0];
+
+                const labels1 = [
+                    "Idade dos usuários",
+                ];
+
+                const data1 = {
+                    labels: labels1,
+                    datasets: [
+                    {
+                        label: 'Menores de idade',
+                        backgroundColor: 'rgb(77,208,225)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [idade.Menores_de_idade],
+                    },
+                    {
+                        label: 'Jovens adultos',
+                        backgroundColor: 'rgb(56,189,248)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [idade.Jovens_adultos],
+                    },
+                    {
+                        label: 'Adultos',
+                        backgroundColor: 'rgb(37, 99, 235)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [idade.Adultos],
+                    },
+                    {
+                        label: 'Idosos',
+                        backgroundColor: 'rgb(13,71,161)',
+                        borderColor: 'rgb(37,99,235)',
+                        data: [idade.Idosos],
+                    },
+                    ]
+                };
+
+                const config1 = {
+                type: 'pie',
+                data: data1,
+                options: {
+                    responsive: true,
+                    plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
+                    }
+                },
+                };
+
+                const myChart = new Chart(
+                    document.getElementById('ChartPieidade'),
+                    config1
+                );
+            })
+        })
+    fetch(`/graficos/graficotituloquiz`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+
+                const painel = json[0];
+                console.log(painel)
+                const labels1 = [
+                    "Total do site",
+                ];
+
+                const data1 = {
+                    labels: labels1,
+                    datasets: [{
+                        label: '🥣Glaceon perdidinha🥣',
+                        backgroundColor: 'rgb(186,230,253)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [painel.TituloQuiz1],
+                    },
+                    {
+                        label: '🧊Iniciante do Gelo🧊',
+                        backgroundColor: 'rgb(77,208,225)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [painel.TituloQuiz2],
+                    },
+                    {
+                        label: '🌨️Aprendiz da Neve🌨️',
+                        backgroundColor: 'rgb(56,189,248)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [painel.TituloQuiz3],
+                    },
+                    {
+                        label: '❄️Chef Gelado❄️',
+                        backgroundColor: 'rgb(37, 99, 235)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [painel.TituloQuiz4],
+                    },
+                    {
+                        label: '💠Mestre Cuca Glacial💠',
+                        backgroundColor: 'rgb(13,71,161)',
+                        borderColor: 'rgb(37,99,235)',
+                        data: [painel.TituloQuiz5],
+                    },
+                    {
+                        label: '🌟👑🌬️Lenda da Cozinha Gélida🌬️👑🌟',
+                        backgroundColor: 'rgb(255,143,0)',
+                        borderColor: 'rgb(175, 216, 230)',
+                        data: [painel.TituloQuiz6],
+                    },
+                    ]
+                };
+
+                const config1 = {
+                    type: 'bar',
+                    data: data1,
+                    options: {}
+                };
+
+                const myChart = new Chart(
+                    document.getElementById('ChartResultadoQuiz'),
+                    config1
+                );
+
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+
+
+    // if (!sessionStorage.ID_USUARIO) {
+    //     if (!sessionStorage.ID_USUARIO) {
+    //         blure.style.display = "flex"
+    //         cardErro.style.display = "block"
+    //         mensagem_erro.innerHTML = `Faça login para acessar esta página`
+
+    //         function opcao(parametro) {
+
+    //             if (parametro == 'home') {
+    //                 window.location.href = "index.html";
+    //             }
+    //             if (parametro == 'login') {
+    //                 window.location.href = "login.html";
+    //             }
+    //         }
+    //     }
+    // }
+</script>

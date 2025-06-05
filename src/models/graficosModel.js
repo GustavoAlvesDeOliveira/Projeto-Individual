@@ -20,7 +20,20 @@ function barradeprogresso() {
     return database.executar(instrucao);
 }
 
+function graficoidade() {
+    var instrucao = `
+    select
+(select count(id) from usuario where timestampdiff(year,Idade,curdate()) < 18) as 'Menores_de_idade',
+(select count(id) from usuario where timestampdiff(year,Idade,curdate()) between 18 and 25) as 'Jovens_adultos',
+(select count(id) from usuario where timestampdiff(year,idade,curdate()) between 25 and 60) as 'Adultos',
+(select count(id) from usuario where timestampdiff(year,idade,curdate()) > 60) as 'Idosos';`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     graficotituloquiz,
-    barradeprogresso
+    barradeprogresso,
+    graficoidade
 };
