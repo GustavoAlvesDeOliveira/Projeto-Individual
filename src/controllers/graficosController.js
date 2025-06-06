@@ -22,6 +22,14 @@ function graficoidade(req, res) {
     })
 }
 
+function graficogenero(req, res) {
+    graficosModel.graficogenero().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 function graficoacertosquiz(req, res) {
     graficosModel.graficoacertosquiz().then(function(resultado){
         res.status(200).json(resultado);
@@ -29,9 +37,20 @@ function graficoacertosquiz(req, res) {
         res.status(500).json(erro.sqlMessage);
     })
 }
+
+function rank (req, res) {
+    graficosModel.rank().then(function(resultado){
+        res.status(200).json(resultado);
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     graficotituloquiz,
     barradeprogresso,
+    graficogenero,
     graficoidade,
-    graficoacertosquiz
+    graficoacertosquiz,
+    rank,
 }

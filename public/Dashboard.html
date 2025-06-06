@@ -70,21 +70,41 @@
             <h4 id="KPIvalor">Total: </h4>
         </div>
         <hr>
-        <h3>Estatísticas do site: </h3>
+        <h3>Estatísticas dos usúarios: </h3>
         <div class="graficopizza">
-            <canvas class="ChartPieidade" id="ChartPieidade"></canvas>
+            <div class="dividirpizza">
+                <p>Idades:</p>
+                <canvas class="ChartPieidade" id="ChartPieidade"></canvas>
+            </div>
+            <div class="dividirpizza">
+                <p>Gêneros:</p>
+                <canvas class="ChartPieidade" id="ChartPiegenero"></canvas>
+            </div>
         </div>
         <hr style="margin-top: 30px;">
         <div class="Resultadoquiz">
-            <h3>Resultado de título do quiz:</h3>
+            <h3>Resultado Quiz</h3>
             <div style="width: 100%;" class="rowgraficos">
                 <div class="Dividircanvas">
-                <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizgeral"></canvas>
+                    <p>Total dos títulos:</p>
+                    <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizgeral"></canvas>
                 </div>
                 <div class="Dividircanvas">
-                <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizacertos"></canvas>
+                    <p>Acertos e Erros: </p>
+                    <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizacertos"></canvas>
                 </div>
-                <!-- <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizsptech"></canvas> -->
+            </div>
+            <div class="rank">
+                <div class="KPIrank">
+                <h3>Lendas da Cozinha Gélida rank</h3>
+                <hr>
+                <div class="top">
+                <p id="nomesresul"></p>
+                </div>
+                <hr>
+                <img src="assets/Emblemas/emblema6 .gif">
+                <hr style="margin: 0;">
+                </div>
             </div>
         </div>
     </div>
@@ -148,8 +168,44 @@
                 );
             })
         })
+    fetch(`/graficos/graficogenero`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+                const genero = json[0];
 
-    // 'Masculino','Feminino','Outros','Prefiro não dizer'
+
+                const data1 = {
+                    labels: ['Masculino','Feminino','Outros','Prefiro não dizer'],
+                    datasets: [
+                        {
+                            label: 'Todos',
+                            data: [genero.Masculino,genero.Feminino,genero.Outros,genero.PrefiroN],
+                            backgroundColor: ['rgb(77,208,225)', 'rgb(56,189,248)', 'rgb(37, 99, 235)', 'rgb(13,71,161)']
+                        }
+                    ]
+                };
+
+                const config1 = {
+                    type: 'doughnut',
+                    data: data1,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        }
+                    },
+                };
+
+                const myChart = new Chart(
+                    document.getElementById('ChartPiegenero'),
+                    config1
+                );
+            })
+        })
 
 
     fetch(`/graficos/graficotituloquiz`, {
@@ -281,6 +337,21 @@
             console.log(err);
         })
 
+        fetch(`graficos/rank`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+                const rank = json;
+                console.log(rank)
+
+                rank.forEach(rank => {
+                    nomesresul.innerHTML += `${rank.nome} ${rank.sobrenome}<br>`;
+                });
+            });
+
+        })
+        
 
 
     // if (!sessionStorage.ID_USUARIO) {

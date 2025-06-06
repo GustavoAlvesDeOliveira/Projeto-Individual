@@ -32,9 +32,33 @@ function graficoidade() {
     return database.executar(instrucao);
 }
 
+function graficogenero(){
+ var instrucao = `
+   select 
+(select count(id) from usuario where genero like 'Masculino') as 'Masculino',
+(select count(id) from usuario where genero like 'Feminino') as 'Feminino',
+(select count(id) from usuario where genero like 'Outros') as 'Outros',
+(select count(id) from usuario where genero like 'PrefiroN') as 'PrefiroN';`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function graficoacertosquiz() {
     var instrucao = `
     select sum(acertos) as 'acertos', sum(erros) as 'erros' from resultado_quiz;
+`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function rank() {
+    var instrucao = `
+    select nome, sobrenome from usuario
+inner join resultado_quiz
+on fkusuario = id
+where titulo = 'Lenda da Cozinha Gélida';
 `
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -45,5 +69,8 @@ module.exports = {
     graficotituloquiz,
     barradeprogresso,
     graficoidade,
-    graficoacertosquiz
+    graficogenero,
+    graficoacertosquiz,
+    rank
 };
+
