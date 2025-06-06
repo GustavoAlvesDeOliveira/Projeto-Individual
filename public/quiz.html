@@ -38,8 +38,6 @@
             <hr>
             <a href="receitas.html"><i class='bx bx-fork'></i>Receitas</a>
             <hr>
-            <a href="sobremim.html"><i class='bx bxs-user'></i>Sobre Mim</a>
-            <hr>
             <a href="quiz.html"><i class='bx bx-file-find'></i>Quiz</a>
             <hr>
             <a href="Dashboard.html"><i class='bx bx-bar-chart-alt'></i>Dashboard</a>
@@ -433,7 +431,7 @@
 
         let fkusuarioVar = sessionStorage.ID_USUARIO;
         let fkquizVar = 1;
-        let emblemaVar = 'teste';
+        let emblemaVar;
         let tituloVar;
         let acertosVar = certas
         let errosVar = erradas
@@ -442,52 +440,58 @@
 
         if (certas == 0 || certas == 1) {
             tituloVar = 'Glaceon perdidinha'
+            emblemaVar = 1;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br>Glaceon perdidinha'
             titulo.innerHTML += `<br>Descrição: Talvez não prestou atenção o suficiente no meu site, aproveite e procure as respostas no site!<br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema1.png">`
 
         }
         else if (certas == 2 || certas == 3) {
             tituloVar = 'Iniciante do Gelo'
+            emblemaVar = 2;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br>Iniciante do Gelo'
             titulo.innerHTML += `<br>Descrição: Sua tentativa não foi em vão, aproveite e procure as respostas no site!<br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema2.png">`
         }
         else if (certas == 4 || certas == 5) {
             tituloVar = 'Aprendiz da Neve'
+            emblemaVar = 3;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br>Aprendiz da Neve'
             titulo.innerHTML += `<br>Descrição: Sabe e não sabe do meu site, fico feliz que tentou! <br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema3.png">`
         }
         else if (certas == 6 || certas == 7) {
             tituloVar = 'Chef Gelado'
+            emblemaVar = 4;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br>Chef Gelado'
             titulo.innerHTML += `<br>Descrição: Este é o caminho para se tornar um verdadeiro chef.<br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema4.png">`
         }
         else if (certas == 8 || certas == 9) {
             tituloVar = 'Mestre Cuca Glacial'
+            emblemaVar = 5;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br>Mestre Cuca Glacial'
             titulo.innerHTML += `<br>Descrição: Incrível! mostrou conhecimentos do meu site!<br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema5.png">`
         }
         else if (certas == 10) {
             tituloVar = 'Lenda da Cozinha Gélida'
+            emblemaVar = 6;
             acertos.innerHTML+= certas
             titulo.innerHTML += '<br`Lenda da Cozinha Gélida'
             titulo.innerHTML += `<br>Descrição: Impressionante!!! Você realmente aprendeu tudo do meu projeto. Seu nome aparecerá na DashBoard<br>
             <br>Junto a este título você ganhou esse emblema: <br>
-            <img class="emblemasIMG" src="assets/perfil.jpg">`
+            <img class="emblemasIMG" src="assets/Emblema/emblema6.png">`
         }
 
         opcaoAcerto()

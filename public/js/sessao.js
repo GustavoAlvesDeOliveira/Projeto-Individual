@@ -34,3 +34,8 @@ function finalizarAguardar(texto) {
     }
 }
 
+function limparSessao() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+}
+

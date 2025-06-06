@@ -15,7 +15,6 @@
     
 }
 
-
 #logado{
    margin-left: 20px;
 }
@@ -158,4 +157,8 @@
 button:hover {
     background-color: #63D4DF; 
     transform: translateY(-1px);
+}
+
+hr{
+   width: 250x;
 }

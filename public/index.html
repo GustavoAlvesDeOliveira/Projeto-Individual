@@ -26,8 +26,8 @@
             <h1>Culinária Glacial</h1>
         </div>
         <div class="DivLogin">
-            <a href="login.html">Login</a>
-            <p id="Sair"></p>
+            <a href="login.html">Login</a> ||
+            <a onclick="limparsesao()" id="Sair">Sair</a>
         </div>
     </div>
 
@@ -39,8 +39,6 @@
             <a href="index.html"> <i class='bx bx-home'></i> Home </a>
             <hr>
             <a href="receitas.html"><i class='bx bx-fork'></i>Receitas</a>
-            <hr>
-            <a href="sobremim.html"><i class='bx bxs-user'></i>Sobre Mim</a>
             <hr>
             <a href="quiz.html"><i class='bx bx-file-find'></i>Quiz</a>
             <hr>
@@ -76,12 +74,14 @@
                     <div id="frangokfc">
                         <h3>Frango kfc</h3>
                     </div>
-                </a>
+                </a>  
             </div>
-        </div><img class="emblema" src="assets/Emblemas/emblema1 .png">
+        </div>
         <hr>
-    </div>
-    
+        <div class="diagrama">
+        <img src="assets/diagramadeuso1.png">
+        </div>
+        <hr>
 </body>
 
 </html>
@@ -106,19 +106,19 @@
             h2bemvindo.innerHTML = ` Seja Bem-Vindo!
                                     <br><br>${nome} ${Lsobrenome} 
                                     <br> ${titulo}
-                                    <br> ${foto}`
+                                    `
         }
         else if (genero == 'Feminino') {
             h2bemvindo.innerHTML = ` Seja Bem-Vinda!
                                     <br><br>${nome} ${Lsobrenome} 
                                     <br> ${titulo}
-                                    <br> ${foto}`
+                                    `
         }
         else {
             h2bemvindo.innerHTML = ` Seja Bem-Vinde!
                                     <br><br>${nome} ${Lsobrenome} 
                                     <br> ${titulo}
-                                    <br><img class="emblema" src="assets/Emblemas/emblema1 .png">`
+                                    `
         }
     }
     else {
@@ -126,6 +126,35 @@
                                 <br><br> Faça login para melhor experiência!
                                 <br><button style="margin-top: 20px;"onclick="facalogin()">Faça Login</button>`
     }
+
+    if(foto==1){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema1.png">`
+        
+    }
+    else if (foto==2){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema2.png">`
+        
+    }
+        else if (foto==3){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema3.png">`
+        
+    }
+        else if (foto==4){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema4.png">`
+        
+    }
+        else if (foto==5){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema5.png">`
+        
+    }
+        else if (foto==6){
+        h2bemvindo.innerHTML += `<br><img class="emblema" src="assets/Emblemas/emblema6 .gif">`
+        
+    }
+
+
+
+
 
     function facalogin(){
         window.location.href = "login.html";

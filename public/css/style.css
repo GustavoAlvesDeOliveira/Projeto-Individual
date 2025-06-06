@@ -254,3 +254,18 @@ header{
     height: 8px;
     background-color: green;
 }
+
+hr{
+    width: 800px;
+    margin: 20px;
+}
+
+.diagrama{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diagrama img{
+    width: 750px;
+}

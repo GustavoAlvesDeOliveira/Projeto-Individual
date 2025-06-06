@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+}
+
+.eu{
+    display: flex;
+}
+
+.imagemeu{
+    display: flex;
+}
+
+.imagemeu img{
+    width: 750;
+    height: auto;
+    border-top-left-radius: 30px;
+}
