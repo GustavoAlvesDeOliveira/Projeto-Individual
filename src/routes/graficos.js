@@ -14,4 +14,8 @@ router.get("/barradeprogresso", function (req,res) {
 router.get("/graficoidade", function (req,res) {
     graficosController.graficoidade(req, res);
 })
+
+router.get("/graficoacertosquiz", function (req,res) {
+    graficosController.graficoacertosquiz(req, res);
+})
 module.exports = router;

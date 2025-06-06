@@ -61,10 +61,8 @@
 
     </div>
     <div class="container">
-        <h3>DashBoard</h3>
         <hr>
-
-        <h3>Recrutando chefs gelados! Progresso dos cadastros rumo aos 59 da sala ❄️</h3>
+        <h3>Recrutando chefs gelados! Progresso dos cadastros. Rumo aos 20 ❄️</h3>
         <div class="barra">
             <div class="progresso" id="processo"></div>
         </div>
@@ -72,13 +70,22 @@
             <h4 id="KPIvalor">Total: </h4>
         </div>
         <hr>
-        <div class="grafico">
-            <h3>Resultado de título do quiz:</h3>
+        <h3>Estatísticas do site: </h3>
+        <div class="graficopizza">
             <canvas class="ChartPieidade" id="ChartPieidade"></canvas>
         </div>
-        <div class="graficos Resultadoquiz">
+        <hr style="margin-top: 30px;">
+        <div class="Resultadoquiz">
             <h3>Resultado de título do quiz:</h3>
-            <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuiz"></canvas>
+            <div style="width: 100%;" class="rowgraficos">
+                <div class="Dividircanvas">
+                <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizgeral"></canvas>
+                </div>
+                <div class="Dividircanvas">
+                <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizacertos"></canvas>
+                </div>
+                <!-- <canvas class="CanvaResultadoQuiz" id="ChartResultadoQuizsptech"></canvas> -->
+            </div>
         </div>
     </div>
 </body>
@@ -95,7 +102,7 @@
                 const NumCadastro = json[0];
                 console.log(NumCadastro);
                 let BarraProgresso;
-                let calc = 100 / 59;
+                let calc = 100 / 20;
                 BarraProgresso = calc * NumCadastro.total;
                 processo.style.width = `${BarraProgresso}%`;
 
@@ -110,55 +117,29 @@
             res.json().then(json => {
                 const idade = json[0];
 
-                const labels1 = [
-                    "Idade dos usuários",
-                ];
 
                 const data1 = {
-                    labels: labels1,
+                    labels: ['Menores de idade', 'Jovens adultos', 'Adultos', 'Idosos'],
                     datasets: [
-                    {
-                        label: 'Menores de idade',
-                        backgroundColor: 'rgb(77,208,225)',
-                        borderColor: 'rgb(175, 216, 230)',
-                        data: [idade.Menores_de_idade],
-                    },
-                    {
-                        label: 'Jovens adultos',
-                        backgroundColor: 'rgb(56,189,248)',
-                        borderColor: 'rgb(175, 216, 230)',
-                        data: [idade.Jovens_adultos],
-                    },
-                    {
-                        label: 'Adultos',
-                        backgroundColor: 'rgb(37, 99, 235)',
-                        borderColor: 'rgb(175, 216, 230)',
-                        data: [idade.Adultos],
-                    },
-                    {
-                        label: 'Idosos',
-                        backgroundColor: 'rgb(13,71,161)',
-                        borderColor: 'rgb(37,99,235)',
-                        data: [idade.Idosos],
-                    },
+                        {
+                            label: 'Todas',
+                            data: [idade.Menores_de_idade, idade.Jovens_adultos, idade.Adultos, idade.Idosos],
+                            backgroundColor: ['rgb(77,208,225)', 'rgb(56,189,248)', 'rgb(37, 99, 235)', 'rgb(13,71,161)']
+                        }
                     ]
                 };
 
                 const config1 = {
-                type: 'pie',
-                data: data1,
-                options: {
-                    responsive: true,
-                    plugins: {
-                    legend: {
-                        position: 'top',
+                    type: 'pie',
+                    data: data1,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: 'Chart.js Pie Chart'
-                    }
-                    }
-                },
                 };
 
                 const myChart = new Chart(
@@ -167,6 +148,10 @@
                 );
             })
         })
+
+    // 'Masculino','Feminino','Outros','Prefiro não dizer'
+
+
     fetch(`/graficos/graficotituloquiz`, {
         method: "GET"
     })
@@ -182,37 +167,37 @@
                 const data1 = {
                     labels: labels1,
                     datasets: [{
-                        label: '🥣Glaceon perdidinha🥣',
+                        label: 'Glaceon perdidinha',
                         backgroundColor: 'rgb(186,230,253)',
                         borderColor: 'rgb(175, 216, 230)',
                         data: [painel.TituloQuiz1],
                     },
                     {
-                        label: '🧊Iniciante do Gelo🧊',
+                        label: 'Iniciante do Gelo',
                         backgroundColor: 'rgb(77,208,225)',
                         borderColor: 'rgb(175, 216, 230)',
                         data: [painel.TituloQuiz2],
                     },
                     {
-                        label: '🌨️Aprendiz da Neve🌨️',
+                        label: 'Aprendiz da Neve',
                         backgroundColor: 'rgb(56,189,248)',
                         borderColor: 'rgb(175, 216, 230)',
                         data: [painel.TituloQuiz3],
                     },
                     {
-                        label: '❄️Chef Gelado❄️',
+                        label: 'Chef Gelado',
                         backgroundColor: 'rgb(37, 99, 235)',
                         borderColor: 'rgb(175, 216, 230)',
                         data: [painel.TituloQuiz4],
                     },
                     {
-                        label: '💠Mestre Cuca Glacial💠',
+                        label: 'Mestre Cuca Glacial',
                         backgroundColor: 'rgb(13,71,161)',
                         borderColor: 'rgb(37,99,235)',
                         data: [painel.TituloQuiz5],
                     },
                     {
-                        label: '🌟👑🌬️Lenda da Cozinha Gélida🌬️👑🌟',
+                        label: 'Lenda da Cozinha Gélida',
                         backgroundColor: 'rgb(255,143,0)',
                         borderColor: 'rgb(175, 216, 230)',
                         data: [painel.TituloQuiz6],
@@ -227,7 +212,66 @@
                 };
 
                 const myChart = new Chart(
-                    document.getElementById('ChartResultadoQuiz'),
+                    document.getElementById('ChartResultadoQuizgeral'),
+                    config1
+                );
+
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+    fetch(`/graficos/graficoacertosquiz`, {
+        method: "GET"
+    })
+        .then(res => {
+            res.json().then(json => {
+
+                const acertoseerros = json[0];
+
+                const labels1 = [
+                    "acertos e erros do quiz:",
+                ];
+
+                const data1 = {
+                    labels: labels1,
+                    datasets: [{
+                        label: 'Acertos',
+                        backgroundColor: 'green',
+                        borderColor: 'green',
+                        data: [acertoseerros.acertos],
+                    },
+                    {
+                        label: 'Erros',
+                        backgroundColor: 'red',
+                        borderColor: 'red',
+                        data: [acertoseerros.erros],
+                    },
+                    ]
+                };
+
+                const config1 = {
+                    type: 'bar',
+                    data: data1,
+                    options: {
+                        indexAxis: 'y',
+                        elements: {
+                            bar: {
+                                borderWidth: 2,
+                            }
+                        },
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                            },
+                        }
+                    },
+                };
+
+                const myChart = new Chart(
+                    document.getElementById('ChartResultadoQuizacertos'),
                     config1
                 );
 

@@ -19,6 +19,11 @@
 #logado{
    margin-left: 20px;
 }
+
+.emblema{
+   width: 100px;
+   height: 100px;
+}
 .imgreceitas{
    display: flex;
    flex-direction: row;
